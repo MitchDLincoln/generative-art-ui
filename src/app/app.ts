@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { ApiService } from './services/api';
 import { Creation } from './models/creation.model';
 import { CommonModule } from '@angular/common';
+import { CreationForm } from './components/creation-form/creation-form';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, CreationForm],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -23,5 +24,9 @@ export class App implements OnInit {
     this.apiService.getCreations().subscribe((creations) => {
       this.creations.set(creations);
     });
+  }
+
+  onCreationAdded(newCreation: Creation): void {
+    this.creations.update((currenteCreation) => [...currenteCreation, newCreation]);
   }
 }

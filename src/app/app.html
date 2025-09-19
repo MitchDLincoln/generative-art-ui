@@ -1,17 +1,20 @@
 <main>
   <h1>Galleria di Arte Generativa</h1>
-  
+
+  <app-creation-form (creationAdded)="onCreationAdded($event)"></app-creation-form>
+
+  <hr />
+
   <section class="gallery">
     @for (creation of creations(); track creation.id) {
-      <article>
-        <h2>{{ creation.name }}</h2>
-        <p>di {{ creation.author }}</p>
-        <pre>{{ creation.params | json }}</pre>
-      </article>
+    <article>
+      <h2>{{ creation.name }}</h2>
+      <p>di {{ creation.author }}</p>
+      <pre>{{ creation.params | json }}</pre>
+    </article>
     } @empty {
-      <p>Caricamento delle creazioni in corso...</p>
+    <p>Caricamento delle creazioni in corso...</p>
     }
   </section>
 </main>
-
 <router-outlet />
