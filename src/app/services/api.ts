@@ -16,4 +16,8 @@ export class ApiService {
   getCreations(): Observable<Creation[]> {
     return this.http.get<Creation[]>(`${this.apiUrl}/creations`);
   }
+
+  createCreation(creationData: { name: string, author: string, params: any }): Observable<Creation> {
+    return this.http.post<Creation>(`${this.apiUrl}/creations`, creationData);
+  }
 }
