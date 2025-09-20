@@ -20,4 +20,8 @@ export class ApiService {
   createCreation(creationData: { name: string, author: string, params: any }): Observable<Creation> {
     return this.http.post<Creation>(`${this.apiUrl}/creations`, creationData);
   }
+
+  deleteCreation(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/creations/${id}`);
+  }
 }

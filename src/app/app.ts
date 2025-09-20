@@ -29,4 +29,14 @@ export class App implements OnInit {
   onCreationAdded(newCreation: Creation): void {
     this.creations.update((currenteCreation) => [...currenteCreation, newCreation]);
   }
+
+  onDeleteCreation(id: number): void {
+    this.apiService.deleteCreation(id).subscribe(() => {
+      // Quando la chiamata API ha successo, aggiorniamo il nostro signal
+      // filtrando l'array per rimuovere l'elemento con l'ID eliminato.
+      this.creations.update(currentCreations =>
+        currentCreations.filter(creation => creation.id !== id)
+      );
+    });
+  }
 }
