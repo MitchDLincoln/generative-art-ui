@@ -11,6 +11,8 @@
       <h2>{{ creation.name }}</h2>
       <p>di {{ creation.author }}</p>
       <pre>{{ creation.params | json }}</pre>
+
+      <button (click)="onDeleteCreation(creation.id)" class="delete-btn">Elimina</button>
     </article>
     } @empty {
     <p>Caricamento delle creazioni in corso...</p>
