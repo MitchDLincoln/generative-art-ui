@@ -1,4 +1,4 @@
-<main>
+<main class="container">
   <h1>Galleria di Arte Generativa</h1>
 
   <app-creation-form
@@ -11,13 +11,15 @@
 
   <section class="gallery">
     @for (creation of creations(); track creation.id) {
-    <article>
+    <article class="card">
       <h2>{{ creation.name }}</h2>
-      <p>di {{ creation.author }}</p>
+      <p class="card__author">di {{ creation.author }}</p>
       <pre>{{ creation.params | json }}</pre>
 
-      <button (click)="onEditCreation(creation)">Modifica</button>
-      <button (click)="onDeleteCreation(creation.id)" class="delete-btn">Elimina</button>
+      <div class="card__actions">
+        <app-button (click)="onEditCreation(creation)" variant="secondary"> Modifica </app-button>
+        <app-button (click)="onDeleteCreation(creation.id)" variant="danger"> Elimina </app-button>
+      </div>
     </article>
     } @empty {
     <p>Caricamento delle creazioni in corso...</p>

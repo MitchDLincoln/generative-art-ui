@@ -1,16 +1,21 @@
 <form [formGroup]="creationForm" (ngSubmit)="onSubmit()">
-  <h3>Crea una Nuova Opera</h3>
-  <div>
+  <h3>{{ creationToEdit ? 'Modifica Opera' : 'Crea una Nuova Opera' }}</h3>
+
+  <div class="form-group">
     <label for="name">Nome Opera:</label>
     <input id="name" type="text" formControlName="name" />
   </div>
-  <div>
+
+  <div class="form-group">
     <label for="author">Autore:</label>
     <input id="author" type="text" formControlName="author" />
   </div>
-  <div>
+
+  <div class="form-group">
     <label for="params">Parametri (JSON):</label>
     <textarea id="params" formControlName="params" rows="3"></textarea>
   </div>
-  <button type="submit" [disabled]="creationForm.invalid">Crea</button>
+  <app-button type="submit" [disabled]="creationForm.invalid">
+    {{ creationToEdit ? 'Salva Modifiche' : 'Crea' }}
+  </app-button>
 </form>

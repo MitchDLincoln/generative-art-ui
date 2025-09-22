@@ -1,0 +1,46 @@
+// Usiamo :host per applicare stili al componente stesso, se necessario.
+// In questo caso lo usiamo per assicurarci che occupi lo spazio necessario.
+:host {
+    display: inline-block;
+  }
+  
+  // BEM: "Block" -> .btn
+  .btn {
+    // Stili di base comuni a tutti i bottoni
+    padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+    border: none;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  
+    // Stili per lo stato disabilitato
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  
+    // Effetto al passaggio del mouse (non disabilitato)
+    &:not(:disabled):hover {
+      transform: translateY(-2px);
+    }
+  }
+  
+  // BEM: "Modifier" -> .btn--variant
+  .btn--primary {
+    background-color: var(--color-primary);
+    color: white;
+  }
+  
+  .btn--secondary {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+  
+  .btn--danger {
+    background-color: var(--color-danger);
+    color: white;
+  }

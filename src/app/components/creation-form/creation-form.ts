@@ -1,3 +1,4 @@
+import { Button } from './../ui/button/button';
 import { CommonModule } from '@angular/common';
 import {
   Component,
@@ -14,7 +15,7 @@ import { Creation } from '../../models/creation.model';
 
 @Component({
   selector: 'app-creation-form',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, Button],
   templateUrl: './creation-form.html',
   styleUrl: './creation-form.scss',
 })
