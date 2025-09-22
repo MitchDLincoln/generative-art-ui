@@ -14,7 +14,7 @@
     <article class="card">
       <h2>{{ creation.name }}</h2>
       <p class="card__author">di {{ creation.author }}</p>
-      <pre>{{ creation.params | json }}</pre>
+      <app-p5-canvas [params]="creation.params"></app-p5-canvas>
 
       <div class="card__actions">
         <app-button (click)="onEditCreation(creation)" variant="secondary"> Modifica </app-button>
