@@ -4,10 +4,11 @@ import { ApiService } from './services/api';
 import { Creation } from './models/creation.model';
 import { CommonModule } from '@angular/common';
 import { CreationForm } from './components/creation-form/creation-form';
+import { Button } from './components/ui/button/button';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, CreationForm],
+  imports: [RouterOutlet, CommonModule, CreationForm, Button],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

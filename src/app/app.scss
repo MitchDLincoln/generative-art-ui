@@ -1,0 +1,42 @@
+.container {
+  max-width: 900px; // Larghezza massima per non allargarsi troppo su schermi grandi
+  margin: 0 auto; // Trucco classico per centrare un blocco
+  padding: calc(var(--spacing-unit) * 2); // Aggiungiamo spazio interno
+}
+
+.gallery {
+  display: grid;
+  // Crea colonne che sono al minimo 350px, ma si adattano per riempire lo spazio.
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: calc(var(--spacing-unit) * 2); // Spazio tra le card
+}
+
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-unit);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+
+  &__author {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-unit);
+  }
+
+  // Il tag <pre> per il JSON
+  pre {
+    background-color: var(--color-background);
+    padding: var(--spacing-unit);
+    border-radius: var(--border-radius);
+    flex-grow: 1; // Fa in modo che il box del codice occupi lo spazio disponibile
+    margin-bottom: var(--spacing-unit);
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end; // Allinea i bottoni a destra
+    gap: var(--spacing-unit);
+  }
+}
