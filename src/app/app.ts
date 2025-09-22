@@ -5,10 +5,11 @@ import { Creation } from './models/creation.model';
 import { CommonModule } from '@angular/common';
 import { CreationForm } from './components/creation-form/creation-form';
 import { Button } from './components/ui/button/button';
+import { P5Canvas } from './components/p5-canvas/p5-canvas';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, CreationForm, Button],
+  imports: [RouterOutlet, CommonModule, CreationForm, Button, P5Canvas],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
