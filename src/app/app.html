@@ -1,7 +1,11 @@
 <main>
   <h1>Galleria di Arte Generativa</h1>
 
-  <app-creation-form (creationAdded)="onCreationAdded($event)"></app-creation-form>
+  <app-creation-form
+    [creationToEdit]="editingCreation()"
+    (creationAdded)="onCreationAdded($event)"
+    (creationUpdated)="onCreationUpdated($event)"
+  ></app-creation-form>
 
   <hr />
 
@@ -12,6 +16,7 @@
       <p>di {{ creation.author }}</p>
       <pre>{{ creation.params | json }}</pre>
 
+      <button (click)="onEditCreation(creation)">Modifica</button>
       <button (click)="onDeleteCreation(creation.id)" class="delete-btn">Elimina</button>
     </article>
     } @empty {

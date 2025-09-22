@@ -19,6 +19,8 @@ export class App implements OnInit {
 
   // Creiamo un signal per contenere i nostri dati in modo reattivo
   public creations = signal<Creation[]>([]);
+  // SIGNAL per tenere traccia di quale elemento stiamo modificando
+  public editingCreation = signal<Creation | null>(null);
 
   ngOnInit(): void {
     this.apiService.getCreations().subscribe((creations) => {
@@ -34,9 +36,24 @@ export class App implements OnInit {
     this.apiService.deleteCreation(id).subscribe(() => {
       // Quando la chiamata API ha successo, aggiorniamo il nostro signal
       // filtrando l'array per rimuovere l'elemento con l'ID eliminato.
-      this.creations.update(currentCreations =>
-        currentCreations.filter(creation => creation.id !== id)
+      this.creations.update((currentCreations) =>
+        currentCreations.filter((creation) => creation.id !== id)
       );
     });
+  }
+
+  // Chiamato quando si clicca "Modifica"
+  onEditCreation(creation: Creation): void {
+    this.editingCreation.set(creation);
+  }
+
+  // Gestisce l'evento dal form quando una modifica è completata
+  onCreationUpdated(updatedCreation: Creation): void {
+    // Aggiorniamo la lista sostituendo il vecchio elemento con quello nuovo
+    this.creations.update((creations) => {
+      return creations.map((c) => (c.id === updatedCreation.id ? updatedCreation : c));
+    });
+    // Resettiamo lo stato di modifica
+    this.editingCreation.set(null);
   }
 }
